@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apple Review Preflight — Feature Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F5F5F7;
+    --card: #FFFFFF;
+    --text-primary: #1D1D1F;
+    --text-secondary: #6E6E73;
+    --text-tertiary: #86868B;
+    --blue: #0071E3;
+    --blue-light: #E8F1FB;
+    --green: #34C759;
+    --green-light: #E8F8EC;
+    --orange: #FF9500;
+    --orange-light: #FFF3E0;
+    --purple: #AF52DE;
+    --purple-light: #F5EDFB;
+    --red: #FF3B30;
+    --red-light: #FFF0EF;
+    --teal: #32ADE6;
+    --teal-light: #E6F5FD;
+    --indigo: #5856D6;
+    --indigo-light: #EEEEFF;
+    --border: rgba(0,0,0,0.06);
+    --shadow: 0 2px 16px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+    --radius: 18px;
+    --radius-sm: 10px;
+    font-family: -apple-system, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 60px 40px 80px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 56px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--blue-light);
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .badge .dot {
+    width: 6px; height: 6px;
+    background: var(--blue);
+    border-radius: 50%;
+  }
+
+  h1 {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+  }
+
+  h1 span {
+    background: linear-gradient(135deg, #0071E3 0%, #34C759 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: 19px;
+    color: var(--text-secondary);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    max-width: 540px;
+    margin: 0 auto 32px;
+    line-height: 1.5;
+  }
+
+  /* Stats row */
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 56px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  .stat-sep {
+    width: 1px;
+    height: 40px;
+    background: var(--border);
+    align-self: center;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .grid-bottom {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .grid-wide {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+  }
+
+  /* Card */
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    animation: fadeUp 0.5s ease both;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .card-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+    flex-shrink: 0;
+  }
+
+  .card-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .card-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .card-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin-bottom: 18px;
+  }
+
+  /* Tag list */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 6px;
+    line-height: 1.4;
+  }
+
+  /* Feature list */
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+  }
+
+  .feature-list li::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  /* Module colors */
+  .blue   { --c: var(--blue);   --cl: var(--blue-light); }
+  .green  { --c: var(--green);  --cl: var(--green-light); }
+  .orange { --c: var(--orange); --cl: var(--orange-light); }
+  .purple { --c: var(--purple); --cl: var(--purple-light); }
+  .red    { --c: var(--red);    --cl: var(--red-light); }
+  .teal   { --c: var(--teal);   --cl: var(--teal-light); }
+  .indigo { --c: var(--indigo); --cl: var(--indigo-light); }
+
+  .card-icon     { background: var(--cl); }
+  .card-label    { color: var(--c); }
+  .tag           { background: var(--cl); color: var(--c); }
+  .feature-list li::before { background: var(--c); }
+
+  /* Wide card inline layout */
+  .card-inline {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .card-inline .card-icon {
+    margin-bottom: 0;
+  }
+
+  /* App types grid inside card */
+  .type-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .type-chip {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 8px;
+    border-radius: 7px;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  /* Policy card special */
+  .card-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .card-split-divider {
+    width: 1px;
+    background: var(--border);
+    margin: 0 -10px;
+  }
+
+  /* Ops mini list */
+  .ops-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 16px;
+  }
+
+  .ops-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .ops-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    animation: fadeUp 0.5s 0.6s ease both;
+  }
+
+  .footer p {
+    font-size: 13px;
+    color: var(--text-tertiary);
+  }
+
+  .footer a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .card:nth-child(1) { animation-delay: 0.10s; }
+  .card:nth-child(2) { animation-delay: 0.15s; }
+  .card:nth-child(3) { animation-delay: 0.20s; }
+  .card:nth-child(4) { animation-delay: 0.25s; }
+  .card:nth-child(5) { animation-delay: 0.30s; }
+  .card:nth-child(6) { animation-delay: 0.35s; }
+  .card:nth-child(7) { animation-delay: 0.40s; }
+
+  @media (max-width: 900px) {
+    .grid, .grid-bottom, .grid-wide { grid-template-columns: 1fr; }
+    h1 { font-size: 34px; }
+    .stats { gap: 24px; }
+    body { padding: 40px 20px 60px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge"><span class="dot"></span>Claude Code Skill · v1.0</div>
+    <h1>Apple Review <span>Preflight</span></h1>
+    <p class="subtitle">The complete AI skill for App Store review compliance — from first submission to approval.</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-number">56</div>
+      <div class="stat-label">Knowledge Files</div>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat">
+      <div class="stat-number">14</div>
+      <div class="stat-label">App Types</div>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat">
+      <div class="stat-number">4</div>
+      <div class="stat-label">Regional Markets</div>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat">
+      <div class="stat-number">11</div>
+      <div class="stat-label">Operations Modules</div>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Preventable Rejections</div>
+    </div>
+  </div>
+
+  <!-- Row 1: 3 cards -->
+  <div class="grid">
+
+    <!-- Core Preflight -->
+    <div class="card blue">
+      <div class="card-icon">🛫</div>
+      <div class="card-label">Core</div>
+      <div class="card-title">Pre-submission Preflight</div>
+      <div class="card-desc">5-step systematic check before every submission.</div>
+      <ul class="feature-list">
+        <li>Top 10 rejection reasons + prevention</li>
+        <li>2026 key requirements tracker</li>
+        <li>Quick checklist: privacy / metadata / design</li>
+        <li>System error vs. human review matrix</li>
+        <li>Scenario-based routing table</li>
+      </ul>
+    </div>
+
+    <!-- Checks -->
+    <div class="card green">
+      <div class="card-icon">🔍</div>
+      <div class="card-label">Automated Scans</div>
+      <div class="card-title">Compliance Checks</div>
+      <div class="card-desc">6 targeted scans covering the most common rejection patterns.</div>
+      <ul class="feature-list">
+        <li>High-frequency rejection map by guideline</li>
+        <li>Privacy 5-point consistency audit</li>
+        <li>Required Reason API detection</li>
+        <li>Background modes abuse scan</li>
+        <li>30+ code risk patterns</li>
+        <li>Structured report template</li>
+      </ul>
+    </div>
+
+    <!-- Regional -->
+    <div class="card orange">
+      <div class="card-icon">🌏</div>
+      <div class="card-label">Regional</div>
+      <div class="card-title">Market Compliance</div>
+      <div class="card-desc">Jurisdiction-specific rules for 4 major markets.</div>
+      <div class="tags" style="margin-top:4px">
+        <span class="tag">🇨🇳 China · ICP / PIPL</span>
+        <span class="tag">🇪🇺 EU · DMA / GDPR</span>
+        <span class="tag">🇬🇧 UK · OSA / UKGC</span>
+        <span class="tag">🇺🇸 US · COPPA / CCPA</span>
+        <span class="tag">Game version numbers</span>
+        <span class="tag">EU alternative distribution</span>
+        <span class="tag">External payment links</span>
+        <span class="tag">NFT policy</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: 2 cards -->
+  <div class="grid-bottom">
+
+    <!-- App Types -->
+    <div class="card purple">
+      <div class="card-icon">📱</div>
+      <div class="card-label">App-Type Guides</div>
+      <div class="card-title">14 Specialized Checklists</div>
+      <div class="card-desc">Category-specific requirements beyond the generic checklist.</div>
+      <div class="type-grid">
+        <div class="type-chip" style="background:var(--purple-light);color:var(--purple)">Subscription</div>
+        <div class="type-chip" style="background:var(--purple-light);color:var(--purple)">AI / LLM</div>
+        <div class="type-chip" style="background:var(--purple-light);color:var(--purple)">Games</div>
+        <div class="type-chip" style="background:var(--purple-light);color:var(--purple)">Ecommerce</div>
+        <div class="type-chip" style="background:var(--purple-light);color:var(--purple)">Health</div>
+        <div class="type-chip" style="background:var(--purple-light);color:var(--purple)">Kids</div>
+        <div class="type-chip" style="background:var(--purple-light);color:var(--purple)">Dating</div>
+        <div class="type-chip" style="background:var(--purple-light);color:var(--purple)">Crypto</div>
+        <div class="type-chip" style="background:var(--purple-light);color:var(--purple)">VPN</div>
+        <div class="type-chip" style="background:var(--purple-light);color:var(--purple)">UGC</div>
+        <div class="type-chip" style="background:var(--purple-light);color:var(--purple)">macOS</div>
+        <div class="type-chip" style="background:var(--purple-light);color:var(--purple)">tvOS</div>
+        <div class="type-chip" style="background:var(--purple-light);color:var(--purple)">watchOS</div>
+        <div class="type-chip" style="background:var(--purple-light);color:var(--purple)">visionOS</div>
+      </div>
+    </div>
+
+    <!-- Operations -->
+    <div class="card red">
+      <div class="card-icon">⚡</div>
+      <div class="card-label">Operations</div>
+      <div class="card-title">11 Post-Rejection Modules</div>
+      <div class="card-desc">What to do after Apple says no — with templates.</div>
+      <div class="ops-grid">
+        <div class="ops-item"><div class="ops-dot" style="background:var(--red)"></div>Rejection appeals</div>
+        <div class="ops-item"><div class="ops-dot" style="background:var(--red)"></div>Expedited review</div>
+        <div class="ops-item"><div class="ops-dot" style="background:var(--red)"></div>Account warnings</div>
+        <div class="ops-item"><div class="ops-dot" style="background:var(--red)"></div>App removal recovery</div>
+        <div class="ops-item"><div class="ops-dot" style="background:var(--red)"></div>IP infringement</div>
+        <div class="ops-item"><div class="ops-dot" style="background:var(--red)"></div>Review manipulation</div>
+        <div class="ops-item"><div class="ops-dot" style="background:var(--red)"></div>Editorial featuring</div>
+        <div class="ops-item"><div class="ops-dot" style="background:var(--red)"></div>Phased release</div>
+        <div class="ops-item"><div class="ops-dot" style="background:var(--red)"></div>CI/CD upload</div>
+        <div class="ops-item"><div class="ops-dot" style="background:var(--red)"></div>TestFlight review</div>
+        <div class="ops-item"><div class="ops-dot" style="background:var(--red)"></div>EU DMA alternatives</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 3: 2fr + 1fr -->
+  <div class="grid-wide">
+
+    <!-- Technical References -->
+    <div class="card teal">
+      <div class="card-icon">📚</div>
+      <div class="card-label">Technical References</div>
+      <div class="card-title">10 Deep-Dive Guides</div>
+      <div class="card-desc">Everything you need to implement compliant code — not just what's required, but how.</div>
+      <div class="tags">
+        <span class="tag">PrivacyInfo.xcprivacy</span>
+        <span class="tag">StoreKit / IAP</span>
+        <span class="tag">Sign in with Apple</span>
+        <span class="tag">Store metadata & screenshots</span>
+        <span class="tag">New OS / SDK compliance</span>
+        <span class="tag">Medical device declaration</span>
+        <span class="tag">Contact Apple channels</span>
+        <span class="tag">App Clips</span>
+        <span class="tag">Push notifications</span>
+        <span class="tag">Widgets & Live Activity</span>
+      </div>
+    </div>
+
+    <!-- Policy Tracking -->
+    <div class="card indigo">
+      <div class="card-icon">🔄</div>
+      <div class="card-label">Policy Tracking</div>
+      <div class="card-title">Auto-update System</div>
+      <ul class="feature-list" style="margin-top:4px">
+        <li>Automated Wayback Machine diff script</li>
+        <li>Guideline change log 2022–2026</li>
+        <li>All 56 files mapped to Apple sources</li>
+        <li>8-step update playbook</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>
+      Works with <strong>Claude Code</strong> · <strong>OpenClaw</strong> · <strong>Codex</strong> · Plain Claude &nbsp;·&nbsp;
+      <a href="https://github.com/YishanCoding/apple-review-preflight">github.com/YishanCoding/apple-review-preflight</a>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
