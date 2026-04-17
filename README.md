@@ -6,6 +6,8 @@
 
 ---
 
+![Feature Map](docs/feature-map.png)
+
 ## What Is This?
 
 A structured knowledge base and AI skill that helps app developers:
