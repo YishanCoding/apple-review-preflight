@@ -6,14 +6,6 @@
 
 ---
 
-## Feature Map
-
-→ **[View Interactive Feature Map](docs/feature-map.html)** — open in browser for the full visual overview.
-
-![Feature Map Preview](docs/feature-map.png)
-
----
-
 ## What Is This?
 
 A structured knowledge base and AI skill that helps app developers:
