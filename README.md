@@ -127,6 +127,8 @@ MIT
 
 # 中文
 
+![功能概览](docs/feature-map-zh.png)
+
 ## 这是什么？
 
 一个结构化的 Apple App Store 审核合规 AI Skill，帮助开发者：
