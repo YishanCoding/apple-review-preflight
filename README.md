@@ -14,7 +14,7 @@ A structured knowledge base and AI skill that helps app developers:
 
 - **Prevent rejections** before submission (covers the top 10 rejection reasons)
 - **Navigate rejections** with correct response strategies
-- **Stay current** with Apple's evolving guidelines (auto-tracked)
+- **Stay current** with Apple's evolving guidelines (Wayback snapshot diff + monthly review playbook — see [Policy Updates](#policy-updates))
 - **Handle edge cases** — regional compliance, account warnings, expedited review, IP disputes, and more
 
 Built on Apple's 2026 review data: 7.7M submissions reviewed, 1.9M rejected. **Most rejections are 100% preventable.**
@@ -35,24 +35,33 @@ Built on Apple's 2026 review data: 7.7M submissions reviewed, 1.9M rejected. **M
 
 ## Installation
 
+Skills are auto-discovered when placed in the agent's skill directory. The skill name comes from the SKILL.md frontmatter `name` field (here: `apple-review-preflight`); keep the directory named to match.
+
 ### Claude Code
 
 ```bash
-# Clone to your skills directory
 git clone https://github.com/YishanCoding/apple-review-preflight ~/.claude/skills/apple-review-preflight
 ```
 
-Then invoke in Claude Code:
+Restart Claude Code so the skill is indexed. Verify by typing `/` and confirming `apple-review-preflight` appears in the skill list, then invoke it.
 
-```
-/apple-review-preflight
-```
-
-### OpenClaw / Codex
+### OpenClaw
 
 ```bash
-# Clone and symlink to your agent-skills directory
 git clone https://github.com/YishanCoding/apple-review-preflight ~/agent-skills/agents-skills/apple-review-preflight
+```
+
+### Codex
+
+Codex shares OpenClaw's `agents-skills/` directory — install via OpenClaw above and Codex will pick it up automatically.
+
+### Sharing across all three (Claude Code + OpenClaw + Codex)
+
+Single source of truth, symlinked into Claude Code's skill dir:
+
+```bash
+git clone https://github.com/YishanCoding/apple-review-preflight ~/agent-skills/agents-skills/apple-review-preflight
+ln -s ~/agent-skills/agents-skills/apple-review-preflight ~/.claude/skills/apple-review-preflight
 ```
 
 ### Plain Claude (no CLI)
@@ -63,6 +72,8 @@ Copy the contents of `SKILL.md` and paste into your conversation as a system pro
 
 ```bash
 cd ~/.claude/skills/apple-review-preflight && git pull
+# or, if shared via the symlink setup:
+cd ~/agent-skills/agents-skills/apple-review-preflight && git pull
 ```
 
 ---
@@ -71,11 +82,11 @@ cd ~/.claude/skills/apple-review-preflight && git pull
 
 ### Pre-submission check (5 steps)
 
-1. **Scan your project** — run the commands in `SKILL.md` Step 1
+1. **Scan your project** — `bash scripts/preflight-scan.sh /path/to/your/project` (one-shot project detection + PrivacyInfo per-target coverage + Info.plist scan + risky deps), or run the manual commands in `SKILL.md` Step 1
 2. **Load your app type** — find your category in `by-app-type/`
 3. **Run compliance checks** — `checks/review-failure-map.md` + `checks/privacy-transparency-consistency.md`
 4. **Check regional rules** — `market-overrides/` for China/EU/UK/US
-5. **Generate report** — use `checks/report-template.md`
+5. **Generate report** — use `checks/report-template.md` (must follow the 5-section contract in `SKILL.md` Step 5)
 
 ### After a rejection
 
@@ -98,10 +109,14 @@ Go to `operations/review-ops.md` — it covers response strategy, appeal templat
 Apple updates its guidelines regularly. To check for changes:
 
 ```bash
+# Primary: 4 live sources (EN/CN Guidelines + Upcoming Requirements + Apple News)
+bash policy/scripts/check-live-sources.sh
+
+# Auxiliary: Wayback historical snapshots (long-term trend / time-travel)
 bash policy/scripts/check-guideline-updates.sh
 ```
 
-See `policy/update-playbook.md` for the full update workflow.
+The live-source script catches changes earlier than Wayback (Apple often updates EN before CN, and posts News before changing Guidelines). See `policy/update-playbook.md` for the full update workflow.
 
 ---
 
@@ -135,12 +150,14 @@ MIT
 
 - **提交前预防拒审**（覆盖 Top 10 拒审原因）
 - **被拒后正确应对**（回复策略 + 申诉模板）
-- **跟踪政策变化**（自动检测 Guidelines 更新）
+- **跟踪政策变化**（Wayback 快照对比 + 月度复查 playbook，详见下方 Quick Start 政策更新检查）
 - **处理复杂场景**（区域合规、账号警告、加急审核、知识产权争议等）
 
 ---
 
 ## 安装
+
+Skill 通过约定目录被 agent 自动发现。Skill 名取自 SKILL.md frontmatter 的 `name` 字段（本 skill：`apple-review-preflight`），目录名保持一致。
 
 ### Claude Code
 
@@ -148,16 +165,25 @@ MIT
 git clone https://github.com/YishanCoding/apple-review-preflight ~/.claude/skills/apple-review-preflight
 ```
 
-安装后在 Claude Code 中输入：
+重启 Claude Code 让索引加载新 skill。在输入框打 `/` 确认 `apple-review-preflight` 出现在列表中，再调用。
 
-```
-/apple-review-preflight
-```
-
-### OpenClaw / Codex
+### OpenClaw
 
 ```bash
 git clone https://github.com/YishanCoding/apple-review-preflight ~/agent-skills/agents-skills/apple-review-preflight
+```
+
+### Codex
+
+Codex 与 OpenClaw 共享 `agents-skills/` 目录，按上一步装好 OpenClaw，Codex 会自动识别。
+
+### 三端共享（Claude Code + OpenClaw + Codex）
+
+单一来源 + symlink 到 Claude Code 的 skill 目录：
+
+```bash
+git clone https://github.com/YishanCoding/apple-review-preflight ~/agent-skills/agents-skills/apple-review-preflight
+ln -s ~/agent-skills/agents-skills/apple-review-preflight ~/.claude/skills/apple-review-preflight
 ```
 
 ### 纯 Claude（无 CLI）
@@ -168,18 +194,29 @@ git clone https://github.com/YishanCoding/apple-review-preflight ~/agent-skills/
 
 ```bash
 cd ~/.claude/skills/apple-review-preflight && git pull
+# 或者使用了 symlink 共享方案的话：
+cd ~/agent-skills/agents-skills/apple-review-preflight && git pull
 ```
 
 ---
 
 ## 快速上手
 
-**提交前预检**：按 `SKILL.md` 的 5 步流程执行
+**提交前预检**：
+```bash
+# 一键扫描（项目栈识别 + PrivacyInfo per-target 覆盖率 + Info.plist 扫描 + 依赖风险）
+bash scripts/preflight-scan.sh /path/to/your/project
+```
+然后按 `SKILL.md` 的 5 步流程执行（Step 5 报告需符合强制 contract）。
 
 **被拒后**：进入 `operations/review-ops.md`
 
 **政策更新检查**：
 ```bash
+# 主路径：4 个 live 源（CN/EN Guidelines + Upcoming Requirements + Apple News）
+bash policy/scripts/check-live-sources.sh
+
+# 辅助：Wayback 历史趋势 / 长周期回溯
 bash policy/scripts/check-guideline-updates.sh
 ```
 

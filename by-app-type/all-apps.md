@@ -42,10 +42,13 @@
 
 ### 1.5 PrivacyInfo.xcprivacy
 
-- [ ] 项目根目录存在 `PrivacyInfo.xcprivacy` 文件
+- [ ] 主 App Target 包含 `PrivacyInfo.xcprivacy` 文件
+- [ ] **每个 Extension Target 各自独立 manifest**（Widget / Live Activity / App Clip / Share Extension / Notification Service Extension）—— 主 App 有 manifest ≠ 全部 Target 都有，是 ITMS-91053/91056 的高频拒审点
 - [ ] 所有 Required Reason API 均已声明（UserDefaults、文件时间戳、磁盘空间、Core Data 等）
 - [ ] 第三方 SDK 的隐私清单也已合并（CocoaPods/SPM 依赖需各自有 PrivacyInfo）
 - [ ] 详细扫描流程：`../checks/required-reason-api-scan.md`
+- [ ] App Clip 专项：`../references/app-clips.md`
+- [ ] Widget / Live Activity 专项：`../references/widgets-live-activity.md`
 
 **为什么重要**：2024 年 5 月起强制要求，缺失直接在 ASC 上传阶段被自动拦截。
 

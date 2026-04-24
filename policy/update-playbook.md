@@ -49,32 +49,46 @@
 
 ---
 
-## 三、Step 2：运行快照对比脚本
+## 三、Step 2：运行 live 源校验脚本
 
 ```bash
-# 在 skill 根目录运行
-bash policy/scripts/check-guideline-updates.sh
+# 在 skill 根目录运行（主路径：live 源）
+bash policy/scripts/check-live-sources.sh
 ```
 
-### 3.1 脚本工作原理
+### 3.1 脚本工作原理（主路径）
 
-1. 调用 Wayback Machine CDX API 获取 Apple Guidelines 页面最近 10 次快照索引
-2. 取最新两次快照的文本内容
-3. 生成 unified diff 输出变动
+1. 抓 4 个 Apple 官方 live 源：
+   - Guidelines EN（通常先于 CN 更新）
+   - Guidelines CN
+   - Upcoming Requirements（强制截止日期）
+   - Apple Developer News（近期公告）
+2. 抽 main 区域文本，存到 `policy/cache/<slug>.txt`（已 gitignore）
+3. 与上次 cache 做 unified diff
+4. 直连失败时 fallback `https://r.jina.ai/<url>`
 
 ### 3.2 解读输出
 
-- `No changes between two latest snapshots.` — 无变动，记录检查日期即可
-- 有 diff 输出 — 分析变动：
-  - `+` 行：新增内容
-  - `-` 行：删除内容
-  - 重点关注条款号变动、新增条款、措辞变化
+每个源会输出以下状态之一：
+- `📌 baseline saved` — 首次运行，建立基线，下次起开始报告变动
+- `✅ no change` — 与上次 cache 一致
+- `🔔 changed (N lines diff)` — 有变动，附 diff preview + 完整 diff 命令
+- `❌ fetch failed` — 直连和 Jina fallback 都失败（多为临时网络问题，重试即可）
+- `⚠️ empty extracted text` — 页面结构变化（main 区域不再存在），需更新脚本
 
-### 3.3 脚本限制
+### 3.3 辅助路径：Wayback 历史回溯
 
-- Wayback Machine 的抓取频率不固定，可能有数周延迟
-- 中文版页面的抓取可能不如英文版频繁
-- 如果脚本输出「快照不足 2 个」，改用英文版 URL 或人工对比
+```bash
+# 长周期趋势 / 找历史某个时间点的版本
+bash policy/scripts/check-guideline-updates.sh
+```
+
+仅在以下场景使用：
+- 想看 Guidelines 在过去几个月的历史版本（live 源只有当前）
+- live 源全部 fetch 失败（极少见）
+- 排查"某条款是什么时候改的"
+
+**为什么 live 源是主路径而非 Wayback**：Wayback 抓取有数周延迟，且常优先抓 EN 漏抓 CN；Apple 通常先改 EN 再改 CN，先发 News 再改 Guidelines——live 源能更早发现这些变动。
 
 ---
 
@@ -138,8 +152,8 @@ bash policy/scripts/check-guideline-updates.sh
 ### 7.2 验证交叉引用
 
 ```bash
-# 在 skill 根目录运行，检查所有内部链接是否指向存在的文件
-cd /Users/sam/agent-skills/agents-skills/apple-review-preflight
+# 在 skill 根目录运行（即包含 SKILL.md 的目录），检查所有内部链接是否指向存在的文件
+test -f SKILL.md || { echo "请在 skill 根目录运行（含 SKILL.md）" >&2; exit 1; }
 
 find . -name "*.md" -print0 | while IFS= read -r -d '' file; do
   dir=$(dirname "$file")
@@ -209,6 +223,7 @@ WWDC 通常发布：
 
 ## 十、参考
 
-- 快照对比脚本：`scripts/check-guideline-updates.sh`
+- live 源校验脚本（主路径）：`scripts/check-live-sources.sh`
+- Wayback 快照对比脚本（辅助/历史）：`scripts/check-guideline-updates.sh`
 - 变动日志：`policy-updates-log.md`
 - 来源映射：`source-map.md`
