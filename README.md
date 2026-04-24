@@ -29,7 +29,8 @@ Built on Apple's 2026 review data: 7.7M submissions reviewed, 1.9M rejected. **M
 | Pre-submission scans | Privacy manifest, Required Reason APIs, background modes, code patterns, metadata |
 | Regional compliance | China (ICP/PIPL), EU/EEA (DMA/GDPR), UK (OSA/UKGC), US (COPPA/CCPA) |
 | Operations | Rejections, appeals, expedited review, account warnings, IP infringement, editorial featuring, phased release, CI/CD |
-| Policy tracking | Automated guideline update detection, change log, source mapping |
+| Automation scripts | `scripts/preflight-scan.{py,sh}` (project detection + PrivacyInfo per-target coverage matrix + Info.plist scan + risky deps); `policy/scripts/check-live-sources.sh` (4 live Apple sources w/ diff cache + Jina fallback); `policy/scripts/check-guideline-updates.sh` (Wayback auxiliary) |
+| Policy tracking | Live source diff (primary) + Wayback snapshot diff (auxiliary), change log, source mapping, monthly review playbook |
 
 ---
 
@@ -230,7 +231,8 @@ bash policy/scripts/check-guideline-updates.sh
 | 预检扫描 | 隐私清单、Required Reason API、后台模式、代码模式、元数据 |
 | 区域合规 | 中国大陆（ICP/PIPL）、欧盟（DMA/GDPR）、英国（OSA）、美区（CCPA/外部支付） |
 | 运营操作 | 被拒处理、申诉、加急审核、账号警告、知识产权、精品推荐、分阶段发布、CI/CD |
-| 政策追踪 | 自动变更检测、更新日志、来源映射 |
+| 自动化脚本 | `scripts/preflight-scan.{py,sh}`（项目栈识别 + PrivacyInfo per-target 覆盖率矩阵 + Info.plist 扫描 + 依赖风险）；`policy/scripts/check-live-sources.sh`（4 个 Apple live 源 diff + Jina fallback）；`policy/scripts/check-guideline-updates.sh`（Wayback 辅助回溯） |
+| 政策追踪 | Live 源 diff（主路径）+ Wayback 快照 diff（辅助）、更新日志、来源映射、月度复查 playbook |
 
 ---
 
