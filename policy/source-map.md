@@ -112,7 +112,17 @@
 | `policy-updates-log.md` | Guidelines 变动时间线 | 综合 Apple News + Upcoming Requirements |
 | `source-map.md`（本文件）| 文件↔来源映射 | — |
 | `update-playbook.md` | 更新流程手册 | — |
+| `policy/scripts/check-live-sources.sh` | live Apple 官方源校验（CN/EN Guidelines + Upcoming Requirements + Apple News） | [App Store Review Guidelines](https://developer.apple.com/app-store/review/guidelines/) / [App Store Review Guidelines CN](https://developer.apple.com/cn/app-store/review/guidelines/) / [Upcoming Requirements](https://developer.apple.com/news/upcoming-requirements/) / [Apple Developer News](https://developer.apple.com/news/) |
 | `scripts/check-guideline-updates.sh` | Wayback Machine 快照对比 | [Wayback CDX API](https://web.archive.org/) |
+
+---
+
+## scripts/
+
+| 文件 | 用途 | 来源 |
+|------|------|------|
+| `scripts/preflight-scan.sh` | Bash 包装器：调度结构化项目扫描 | 本 skill 执行辅助脚本（基于仓库结构约定） |
+| `scripts/preflight-scan.py` | 通用项目结构探测，输出 target / plist / manifest / 依赖信号 | 本 skill 执行辅助脚本（基于仓库结构约定） |
 
 ---
 

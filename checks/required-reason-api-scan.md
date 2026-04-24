@@ -14,6 +14,7 @@ Apple 将某些可能被滥用于设备指纹识别的 API 归类为 **Required 
 
 **关键原则**：
 - App 本身的 PrivacyInfo.xcprivacy 必须覆盖 App 代码中的用法
+- 每个独立 bundle target（如 App Clip / Widget / Activity / Share Extension）都应分别确认自己的 PrivacyInfo.xcprivacy 覆盖范围
 - **第三方 SDK 也必须各自提供 PrivacyInfo.xcprivacy**（SDK 作者的责任）
 - 如果 SDK 没有提供 PrivacyInfo.xcprivacy，你需要在你的 App 的 PrivacyInfo.xcprivacy 中代为声明
 
@@ -300,13 +301,16 @@ RESULT=$(grep -rn "\bUserDefaults\b\|NSUserDefaults\|AsyncStorage" \
 
 echo ""
 echo "=== PrivacyInfo.xcprivacy 检查 ==="
-PRIVACY_FILE=$(find . -name "PrivacyInfo.xcprivacy" -not -path "*/Pods/*" -not -path "*/node_modules/*" 2>/dev/null | head -1)
-if [ -z "$PRIVACY_FILE" ]; then
+PRIVACY_FILES=$(find . -name "PrivacyInfo.xcprivacy" -not -path "*/Pods/*" -not -path "*/node_modules/*" 2>/dev/null)
+if [ -z "$PRIVACY_FILES" ]; then
   echo "❌ 未找到 PrivacyInfo.xcprivacy — 必须创建！"
 else
-  echo "✅ 找到: $PRIVACY_FILE"
-  DECLARED=$(grep -c "NSPrivacyAccessedAPIType>" "$PRIVACY_FILE" 2>/dev/null)
-  echo "   已声明 API 类别数：$DECLARED"
+  echo "✅ 找到以下 manifest:"
+  printf "%s\n" "$PRIVACY_FILES"
+  FIRST_PRIVACY_FILE=$(printf "%s\n" "$PRIVACY_FILES" | head -1)
+  DECLARED=$(grep -c "NSPrivacyAccessedAPIType>" "$FIRST_PRIVACY_FILE" 2>/dev/null)
+  echo "   首个 manifest 已声明 API 类别数：$DECLARED"
+  echo "   提醒：如存在 App Clip / Widget / Activity / Extension，请逐个 target 检查"
 fi
 
 echo ""

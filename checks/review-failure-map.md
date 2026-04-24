@@ -46,7 +46,7 @@
 | 描述含竞品名称（如「比 XX 好用」） | 2.3.7 | Description 提及竞品 |
 | 正文字体在真机上不可读 | 4（Design） | 字号过小或对比度不足，模拟器正常但真机难读 |
 | 纯 WebView 壳，无原生价值 | 4.2 | App 全部功能是 WKWebView 渲染网页 |
-| 评分提示使用自定义 UI | 5.6.1 | 非 `SKStoreReviewRequest` 的自定义评分弹窗 |
+| 评分提示使用自定义 UI | 5.6.1 | 非 Apple 公开评分 API（如 `SKStoreReviewController.requestReview(...)`）的自定义评分弹窗 |
 | 权限描述过于模糊 | 5.1.1 | `NSCameraUsageDescription` = "This app needs camera" |
 | 元数据含 Apple 商标/Logo | 5.2.4/5.2.5 | 截图/图标含 Apple Logo 或 iPhone 图片 |
 | 推送通知用于营销（未经明确选择） | 4.5.4 | 用户未 opt-in 就收到促销推送 |

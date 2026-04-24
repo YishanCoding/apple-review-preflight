@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.1.0] - 2026-04-24
+
+### Added
+- `scripts/preflight-scan.{py,sh}` — structure-aware preflight discovery for `Info.plist`, `PrivacyInfo.xcprivacy`, targets, manifests, entitlements, and dependency signals
+- `policy/scripts/check-live-sources.sh` — live Apple source tracking for Guidelines EN/CN, Upcoming Requirements, and Apple News
+- `docs/feature-map.svg` and `docs/feature-map-zh.svg` — updated README diagrams reflecting the new workflow
+
+### Changed
+- `SKILL.md` Step 1 now routes through `scripts/preflight-scan.sh` instead of assuming a fixed iOS path
+- `SKILL.md` now defines a minimum output contract: `Scope / Findings / Missing Inputs / Evidence / Final Recommendation`
+- `by-app-type/all-apps.md` now treats Privacy Manifest coverage as target-level, including App Clips / Widgets / Extensions
+- `README.md` now positions policy tracking accurately as live-source review plus Wayback-assisted diff
+- `README.md` installation notes for Codex/OpenClaw now clarify scanned skill roots instead of implying a universal default
+- `policy/update-playbook.md` now uses repo-root execution and treats Wayback as a helper rather than the sole freshness source
+- `guidelines/core-guidelines-map.md` and `checks/review-failure-map.md` now reference Apple's public rating prompt API wording more precisely
+
 ## [1.0.0] - 2026-04-17
 
 ### Added

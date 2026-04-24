@@ -1,0 +1,63 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" fill="#F5F1E8"/>
+  <rect x="56" y="48" width="1088" height="664" rx="28" fill="#FFFDF8" stroke="#1C1A17" stroke-width="2"/>
+  <text x="88" y="102" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="38" font-weight="700">
+    Apple Review Preflight
+  </text>
+  <text x="88" y="136" fill="#5E584F" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="20">
+    提审合规工作流：先探测，再审计，再验证，再追踪更新
+  </text>
+
+  <rect x="88" y="176" width="240" height="200" rx="24" fill="#F6D8AE" stroke="#1C1A17" stroke-width="2"/>
+  <text x="112" y="218" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="26" font-weight="700">1. 探测结构</text>
+  <text x="112" y="254" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="19">tools/preflight-scan.sh</text>
+  <text x="112" y="286" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">自动发现：</text>
+  <text x="112" y="314" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">Info.plist / PrivacyInfo.xcprivacy</text>
+  <text x="112" y="340" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">targets / extensions / 包管理标记</text>
+  <text x="112" y="366" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">可能影响审核的依赖信号</text>
+
+  <rect x="352" y="176" width="240" height="200" rx="24" fill="#D6E8C8" stroke="#1C1A17" stroke-width="2"/>
+  <text x="376" y="218" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="26" font-weight="700">2. 审计规则</text>
+  <text x="376" y="254" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="19">checks/ + by-app-type/</text>
+  <text x="376" y="286" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">高频拒审映射</text>
+  <text x="376" y="312" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">隐私五处一致性</text>
+  <text x="376" y="338" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">Required Reason API</text>
+  <text x="376" y="364" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">平台和类型专项清单</text>
+
+  <rect x="616" y="176" width="240" height="200" rx="24" fill="#D3E4F7" stroke="#1C1A17" stroke-width="2"/>
+  <text x="640" y="218" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="26" font-weight="700">3. 输出结论</text>
+  <text x="640" y="254" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="19">证据驱动报告</text>
+  <text x="640" y="286" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">Scope</text>
+  <text x="640" y="312" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">Findings</text>
+  <text x="640" y="338" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">Missing Inputs</text>
+  <text x="640" y="364" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">Final Recommendation</text>
+
+  <rect x="880" y="176" width="232" height="200" rx="24" fill="#F4D6D6" stroke="#1C1A17" stroke-width="2"/>
+  <text x="904" y="218" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="26" font-weight="700">4. 跟踪更新</text>
+  <text x="904" y="254" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="19">policy/ 工作流</text>
+  <text x="904" y="286" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">先看 Apple live 官方源</text>
+  <text x="904" y="312" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">Wayback 只做 diff 辅助</text>
+  <text x="904" y="338" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">变动记入 updates log</text>
+  <text x="904" y="364" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">同步 source-map 引用</text>
+
+  <path d="M328 276H352" stroke="#1C1A17" stroke-width="3"/>
+  <path d="M592 276H616" stroke="#1C1A17" stroke-width="3"/>
+  <path d="M856 276H880" stroke="#1C1A17" stroke-width="3"/>
+
+  <rect x="88" y="428" width="1024" height="228" rx="24" fill="#1C1A17"/>
+  <text x="120" y="474" fill="#FFF8EE" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="28" font-weight="700">
+    这次版本重点修正
+  </text>
+  <text x="120" y="516" fill="#FFF8EE" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="20">
+    • Step 1 不再假设固定 iOS 路径，而是先做项目结构探测
+  </text>
+  <text x="120" y="548" fill="#FFF8EE" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="20">
+    • Manifest 检查覆盖主 App、App Clip、Widget 和各类 Extension
+  </text>
+  <text x="120" y="580" fill="#FFF8EE" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="20">
+    • README 对政策更新能力改为真实口径：live 官方源 + Wayback 辅助 diff
+  </text>
+  <text x="120" y="612" fill="#FFF8EE" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="20">
+    • 维护文档改为从仓库根目录执行，不再依赖个人机器路径
+  </text>
+</svg>

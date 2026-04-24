@@ -10,7 +10,7 @@
 ```
 ① 检查 Apple News / Upcoming Requirements
         ↓
-② 运行 scripts/check-guideline-updates.sh 对比快照
+② 运行 policy/scripts/check-guideline-updates.sh 对比快照
         ↓
 ③ 识别变动条款
         ↓
@@ -49,7 +49,17 @@
 
 ---
 
-## 三、Step 2：运行 live 源校验脚本
+## 三、Step 2：先查 live 官方源，再运行快照对比脚本
+
+### 3.0 为什么先查 live 源
+
+Wayback 只适合做历史对比和回溯，不适合作为 freshness 的唯一依据。维护时应先看：
+- Apple Developer News
+- Upcoming Requirements
+- live 的 App Store Review Guidelines 页面
+- 相关 ASC Help 页面
+
+只有在需要确认“最近到底改了哪一段”时，再用 Wayback diff 辅助定位。
 
 ```bash
 # 在 skill 根目录运行（主路径：live 源）
@@ -78,6 +88,11 @@ bash policy/scripts/check-live-sources.sh
 
 ### 3.3 辅助路径：Wayback 历史回溯
 
+- Wayback Machine 的抓取频率不固定，可能有数周延迟
+- 中文版页面的抓取可能不如英文版频繁
+- 如果脚本输出「快照不足 2 个」，改用英文版 URL 或人工对比
+- 因此：脚本输出“无变化”不等于 Apple live 文档没有变化
+
 ```bash
 # 长周期趋势 / 找历史某个时间点的版本
 bash policy/scripts/check-guideline-updates.sh
@@ -86,9 +101,7 @@ bash policy/scripts/check-guideline-updates.sh
 仅在以下场景使用：
 - 想看 Guidelines 在过去几个月的历史版本（live 源只有当前）
 - live 源全部 fetch 失败（极少见）
-- 排查"某条款是什么时候改的"
-
-**为什么 live 源是主路径而非 Wayback**：Wayback 抓取有数周延迟，且常优先抓 EN 漏抓 CN；Apple 通常先改 EN 再改 CN，先发 News 再改 Guidelines——live 源能更早发现这些变动。
+- 排查“某条款是什么时候改的”
 
 ---
 
@@ -223,7 +236,7 @@ WWDC 通常发布：
 
 ## 十、参考
 
-- live 源校验脚本（主路径）：`scripts/check-live-sources.sh`
-- Wayback 快照对比脚本（辅助/历史）：`scripts/check-guideline-updates.sh`
+- live 源校验脚本（主路径）：`policy/scripts/check-live-sources.sh`
+- Wayback 快照对比脚本（辅助/历史）：`policy/scripts/check-guideline-updates.sh`
 - 变动日志：`policy-updates-log.md`
 - 来源映射：`source-map.md`
