@@ -6,7 +6,7 @@
 
 ---
 
-![Feature Map](docs/feature-map.svg)
+![Feature Map](docs/feature-map.png)
 
 ## What Is This?
 
@@ -148,7 +148,7 @@ MIT
 
 # 中文
 
-![功能概览](docs/feature-map-zh.svg)
+![功能概览](docs/feature-map-zh.png)
 
 ## 这是什么？
 
