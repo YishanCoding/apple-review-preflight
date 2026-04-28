@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.0] - 2026-04-28
+
+### Added
+- `operations/review-timing.md` — new: review timing patterns and optimal submission windows. Covers Apple official 24h SLA, Runway 2026 weekly/monthly data, timezone-based submission timing (Beijing 00:00–04:00 = Cupertino 09:00 PDT), holiday peak delays (official Apple announcements for Dec 20–26 confirmed multi-year), app-type review time differences, status signal interpretation (Waiting for Review vs In Review), and Meet with App Review scheduling
+
+### Changed
+- `SKILL.md` routing tables: added "审核时长 / 提交时机 / 高峰期" → `operations/review-timing.md` in both task and contact-scenario sections
+- `README.md` Coverage table: updated Operations row to include review timing
+
 ## [1.1.0] - 2026-04-24
 
 ### Added

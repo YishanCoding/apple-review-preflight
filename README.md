@@ -27,7 +27,7 @@ Built on Apple's 2026 review data: 7.7M submissions reviewed, 1.9M rejected. **M
 |------|-------|
 | App-type checklists | 14 types (subscription, AI, games, health, kids, dating, ecommerce, crypto, VPN, UGC, macOS, tvOS, watchOS, visionOS) |
 | Pre-submission scans | Project-structure discovery, privacy manifest coverage, Required Reason APIs, background modes, code patterns, metadata |
-| Operations | Rejections, appeals, expedited review, account warnings, IP infringement, editorial featuring, phased release, CI/CD |
+| Operations | Rejections, appeals, expedited review, review timing &amp; submission windows, account warnings, IP infringement, editorial featuring, phased release, CI/CD |
 | Automation scripts | `scripts/preflight-scan.{py,sh}` for structure-aware project scanning; `policy/scripts/check-live-sources.sh` for live Apple source tracking; `policy/scripts/check-guideline-updates.sh` for Wayback history diff |
 | Policy tracking | Live-source review workflow, Wayback-assisted diff, change log, source mapping, monthly review playbook |
 

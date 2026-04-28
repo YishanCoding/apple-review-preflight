@@ -1,63 +1,147 @@
 <svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="760" fill="#F5F1E8"/>
-  <rect x="56" y="48" width="1088" height="664" rx="28" fill="#FFFDF8" stroke="#1C1A17" stroke-width="2"/>
-  <text x="88" y="102" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="38" font-weight="700">
-    Apple Review Preflight
-  </text>
-  <text x="88" y="136" fill="#5E584F" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="20">
-    提审合规工作流：先探测，再审计，再验证，再追踪更新
-  </text>
+  <defs>
+    <linearGradient id="grad-blue-purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#667EEA"/>
+      <stop offset="100%" stop-color="#764BA2"/>
+    </linearGradient>
+    <linearGradient id="grad-orange-pink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F093FB"/>
+      <stop offset="100%" stop-color="#F5576C"/>
+    </linearGradient>
+    <linearGradient id="grad-teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4FACFE"/>
+      <stop offset="100%" stop-color="#00F2FE"/>
+    </linearGradient>
+    <linearGradient id="grad-mint" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#43E97B"/>
+      <stop offset="100%" stop-color="#38F9D7"/>
+    </linearGradient>
+    <linearGradient id="bg-glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F7F8FC"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <filter id="shadow-soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#1F294014" flood-opacity="1"/>
+    </filter>
+    <filter id="shadow-subtle" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#1F29400D" flood-opacity="1"/>
+    </filter>
+    <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0L12 6L0 12V0Z" fill="#A1A9BC"/>
+    </marker>
+  </defs>
 
-  <rect x="88" y="176" width="240" height="200" rx="24" fill="#F6D8AE" stroke="#1C1A17" stroke-width="2"/>
-  <text x="112" y="218" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="26" font-weight="700">1. 探测结构</text>
-  <text x="112" y="254" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="19">tools/preflight-scan.sh</text>
-  <text x="112" y="286" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">自动发现：</text>
-  <text x="112" y="314" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">Info.plist / PrivacyInfo.xcprivacy</text>
-  <text x="112" y="340" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">targets / extensions / 包管理标记</text>
-  <text x="112" y="366" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">可能影响审核的依赖信号</text>
+  <rect width="1200" height="760" fill="#FAFAFA"/>
+  <circle cx="1088" cy="88" r="132" fill="#EEF2FF"/>
+  <circle cx="1118" cy="112" r="92" fill="#F8F3FF"/>
+  <circle cx="122" cy="698" r="148" fill="#F4FBFF"/>
+  <rect x="34" y="28" width="1132" height="704" rx="36" fill="url(#bg-glow)"/>
 
-  <rect x="352" y="176" width="240" height="200" rx="24" fill="#D6E8C8" stroke="#1C1A17" stroke-width="2"/>
-  <text x="376" y="218" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="26" font-weight="700">2. 审计规则</text>
-  <text x="376" y="254" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="19">checks/ + by-app-type/</text>
-  <text x="376" y="286" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">高频拒审映射</text>
-  <text x="376" y="312" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">隐私五处一致性</text>
-  <text x="376" y="338" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">Required Reason API</text>
-  <text x="376" y="364" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">平台和类型专项清单</text>
+  <text x="80" y="68" fill="#999999" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="2.6">APPLE REVIEW SKILL</text>
+  <text x="80" y="111" fill="#111111" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="31" font-weight="700">App Store 审核预检</text>
+  <text x="80" y="139" fill="#666666" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="400">提前拦截审核风险</text>
 
-  <rect x="616" y="176" width="240" height="200" rx="24" fill="#D3E4F7" stroke="#1C1A17" stroke-width="2"/>
-  <text x="640" y="218" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="26" font-weight="700">3. 输出结论</text>
-  <text x="640" y="254" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="19">证据驱动报告</text>
-  <text x="640" y="286" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">Scope</text>
-  <text x="640" y="312" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">Findings</text>
-  <text x="640" y="338" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">Missing Inputs</text>
-  <text x="640" y="364" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">Final Recommendation</text>
+  <text x="80" y="182" fill="#999999" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="2.6">WORKFLOW</text>
 
-  <rect x="880" y="176" width="232" height="200" rx="24" fill="#F4D6D6" stroke="#1C1A17" stroke-width="2"/>
-  <text x="904" y="218" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="26" font-weight="700">4. 跟踪更新</text>
-  <text x="904" y="254" fill="#1C1A17" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="19">policy/ 工作流</text>
-  <text x="904" y="286" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">先看 Apple live 官方源</text>
-  <text x="904" y="312" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">Wayback 只做 diff 辅助</text>
-  <text x="904" y="338" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">变动记入 updates log</text>
-  <text x="904" y="364" fill="#4B4339" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="17">同步 source-map 引用</text>
+  <path d="M292 266H336" stroke="#A1A9BC" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowhead)"/>
+  <path d="M576 266H620" stroke="#A1A9BC" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowhead)"/>
+  <path d="M860 266H904" stroke="#A1A9BC" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowhead)"/>
 
-  <path d="M328 276H352" stroke="#1C1A17" stroke-width="3"/>
-  <path d="M592 276H616" stroke="#1C1A17" stroke-width="3"/>
-  <path d="M856 276H880" stroke="#1C1A17" stroke-width="3"/>
+  <g filter="url(#shadow-soft)">
+    <rect x="80" y="198" width="212" height="138" rx="24" fill="url(#grad-blue-purple)"/>
+  </g>
+  <g opacity="0.18">
+    <circle cx="250" cy="228" r="42" fill="#FFFFFF"/>
+  </g>
+  <circle cx="120" cy="236" r="22" stroke="#FFFFFF" stroke-width="2.6"/>
+  <path d="M135 251L149 265" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/>
+  <text x="120" y="281" fill="#FFFFFF" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="700">发现</text>
+  <text x="120" y="304" fill="rgba(255,255,255,0.82)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">识别项目结构与审核风险信号</text>
+  <text x="120" y="323" fill="rgba(255,255,255,0.82)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">Info.plist、manifest、targets、依赖</text>
 
-  <rect x="88" y="428" width="1024" height="228" rx="24" fill="#1C1A17"/>
-  <text x="120" y="474" fill="#FFF8EE" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="28" font-weight="700">
-    这次版本重点修正
-  </text>
-  <text x="120" y="516" fill="#FFF8EE" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="20">
-    • Step 1 不再假设固定 iOS 路径，而是先做项目结构探测
-  </text>
-  <text x="120" y="548" fill="#FFF8EE" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="20">
-    • Manifest 检查覆盖主 App、App Clip、Widget 和各类 Extension
-  </text>
-  <text x="120" y="580" fill="#FFF8EE" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="20">
-    • README 对政策更新能力改为真实口径：live 官方源 + Wayback 辅助 diff
-  </text>
-  <text x="120" y="612" fill="#FFF8EE" font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif" font-size="20">
-    • 维护文档改为从仓库根目录执行，不再依赖个人机器路径
-  </text>
+  <g filter="url(#shadow-soft)">
+    <rect x="364" y="198" width="212" height="138" rx="24" fill="url(#grad-blue-purple)"/>
+  </g>
+  <g opacity="0.18">
+    <circle cx="534" cy="228" r="42" fill="#FFFFFF"/>
+  </g>
+  <rect x="404" y="216" width="36" height="46" rx="8" stroke="#FFFFFF" stroke-width="2.4"/>
+  <path d="M412 230H432" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M412 240H432" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M412 250H422" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M426 248L431 253L440 242" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="404" y="281" fill="#FFFFFF" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="700">审查</text>
+  <text x="404" y="304" fill="rgba(255,255,255,0.82)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">按条款与 App 类型加载专项检查</text>
+  <text x="404" y="323" fill="rgba(255,255,255,0.82)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">隐私、IAP、元数据、平台差异</text>
+
+  <g filter="url(#shadow-soft)">
+    <rect x="648" y="198" width="212" height="138" rx="24" fill="url(#grad-blue-purple)"/>
+  </g>
+  <g opacity="0.18">
+    <circle cx="818" cy="228" r="42" fill="#FFFFFF"/>
+  </g>
+  <path d="M688 219L706 212L724 219V233C724 248 712 259 706 262C700 259 688 248 688 233V219Z" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M698 236L704 242L716 228" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="688" y="281" fill="#FFFFFF" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="700">验证</text>
+  <text x="688" y="304" fill="rgba(255,255,255,0.82)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">强制输出带证据的发现与缺失输入</text>
+  <text x="688" y="323" fill="rgba(255,255,255,0.82)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">没有证据就不能给出放行结论</text>
+
+  <g filter="url(#shadow-soft)">
+    <rect x="932" y="198" width="212" height="138" rx="24" fill="url(#grad-blue-purple)"/>
+  </g>
+  <g opacity="0.18">
+    <circle cx="1102" cy="228" r="42" fill="#FFFFFF"/>
+  </g>
+  <path d="M974 223C984 214 998 211 1010 216" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M1008 208L1011 217L1002 220" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1014 253C1004 262 990 265 978 260" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M980 268L977 259L986 256" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="972" y="281" fill="#FFFFFF" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="700">更新</text>
+  <text x="972" y="304" fill="rgba(255,255,255,0.82)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">追踪政策变化、审核时机与升级通道</text>
+  <text x="972" y="323" fill="rgba(255,255,255,0.82)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">持续对齐 Apple live 官方源</text>
+
+  <text x="80" y="394" fill="#999999" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="2.6">MODULES</text>
+
+  <g filter="url(#shadow-subtle)">
+    <rect x="80" y="410" width="250" height="170" rx="26" fill="url(#grad-orange-pink)"/>
+  </g>
+  <text x="104" y="442" fill="#FFFFFF" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="700">拒审处理</text>
+  <text x="104" y="470" fill="rgba(255,255,255,0.82)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">• 申诉、回复策略与重新提交流程</text>
+  <text x="104" y="492" fill="rgba(255,255,255,0.82)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">• 加急审核与 reviewer 沟通要点</text>
+  <text x="104" y="514" fill="rgba(255,255,255,0.82)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">• 下架恢复、处罚处理与升级通道</text>
+
+  <g filter="url(#shadow-subtle)">
+    <rect x="360" y="410" width="250" height="170" rx="26" fill="url(#grad-teal)"/>
+  </g>
+  <rect x="526" y="430" width="60" height="24" rx="12" fill="#FFFFFF"/>
+  <text x="541" y="446" fill="#1797B8" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.2">NEW</text>
+  <text x="384" y="442" fill="#FFFFFF" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="700">审核时机</text>
+  <text x="384" y="470" fill="rgba(255,255,255,0.84)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">• Waiting for Review 与 In Review 时长判断</text>
+  <text x="384" y="492" fill="rgba(255,255,255,0.84)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">• 提交窗口、节假日峰值与排队风险</text>
+  <text x="384" y="514" fill="rgba(255,255,255,0.84)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">• TestFlight、分阶段发布与上线节奏</text>
+
+  <g filter="url(#shadow-subtle)">
+    <rect x="640" y="410" width="250" height="170" rx="26" fill="url(#grad-mint)"/>
+  </g>
+  <text x="664" y="442" fill="#FFFFFF" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="700">账号与IP</text>
+  <text x="664" y="470" fill="rgba(255,255,255,0.82)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">• Pending Termination、账号警告、3.2(f)</text>
+  <text x="664" y="492" fill="rgba(255,255,255,0.82)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">• 商标、DMCA 与抄袭应对 playbook</text>
+  <text x="664" y="514" fill="rgba(255,255,255,0.82)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">• 联系 Apple 的渠道与升级路由</text>
+
+  <g filter="url(#shadow-subtle)">
+    <rect x="920" y="410" width="224" height="170" rx="26" fill="url(#grad-blue-purple)"/>
+  </g>
+  <text x="944" y="442" fill="#FFFFFF" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="700">编辑规则</text>
+  <text x="944" y="470" fill="rgba(255,255,255,0.82)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">• 元数据真实性、截图、年龄分级</text>
+  <text x="944" y="492" fill="rgba(255,255,255,0.82)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">• 精品推荐申请与宣传边界</text>
+  <text x="944" y="514" fill="rgba(255,255,255,0.82)" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">• 区域化上架与文案边角案例</text>
+
+  <text x="80" y="626" fill="#999999" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="2.6">OUTPUT</text>
+
+  <g filter="url(#shadow-subtle)">
+    <rect x="80" y="642" width="1064" height="76" rx="26" fill="#F0F0F5"/>
+  </g>
+  <text x="108" y="674" fill="#111111" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="700">输出：发布 / 暂缓建议</text>
+  <text x="108" y="696" fill="#666666" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">覆盖范围、证据、缺失输入与明确结论，最终给出可发布、带风险发布或先修复再提审。</text>
+  <text x="804" y="696" fill="#666666" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13">遇到关键问题、缺演示账号、IAP 未验证或 manifest 覆盖缺口时立即暂停放行。</text>
 </svg>
